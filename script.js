@@ -291,7 +291,7 @@ function nextLayer(current) {
     showLayer(current + 1);
 }
 
-const text = "Ana, my heart's favorite person\nWhen I imagine my happiest moments, they all begin and end with you, your laughter, your warmth, your love. I feel a bright and beautiful year ahead, truly it is and yours.\nI'll always be right beside you.\nYour Highness";
+const text = "Ana, my heart's favorite person\nI feel a bright and beautiful year ahead, truly it is and yours. I'll always be right beside you.\nYour Highness";
 let i = 0;
 
 function typeWriter() {

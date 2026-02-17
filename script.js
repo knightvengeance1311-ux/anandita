@@ -291,7 +291,7 @@ function nextLayer(current) {
     showLayer(current + 1);
 }
 
-const text = "Happy Birthday to the most wonderful lady of my life,\n\nMay your day be wrapped in laughter, warmed by love, and filled with the little joys that make your beautiful smile shine.\n\nWill be always there for you, Your Highness";
+const text = "Happy Birthday to the most wonderful lady of my life,\nMay your day be wrapped in laughter, warmed by love, and filled with the little joys that make your beautiful smile shine.\nWill be always there for you, Your Highness";
 let i = 0;
 
 function typeWriter() {

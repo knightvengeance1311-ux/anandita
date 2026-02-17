@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Scripts for Tree Animation -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jscex.min.js"></script>
+    <script type="text/javascript" src="js/jscex-parser.js"></script>
+    <script type="text/javascript" src="js/jscex-jit.js"></script>
+    <script type="text/javascript" src="js/jscex-builderbase.min.js"></script>
+    <script type="text/javascript" src="js/jscex-async.min.js"></script>
+    <script type="text/javascript" src="js/jscex-async-powerpack.min.js"></script>
+    <script type="text/javascript" src="js/functions.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/love.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="ambient-background"></div>
+    <canvas id="background-canvas"></canvas> <!-- New Canvas for Particles -->
+    <div id="main-content">
+
+        <!-- Intro / Teasing Button Section -->
+        <div id="intro-screen">
+            <h1 class="bounce">For someone very special...</h1>
+            <p>I have a surprise for you!</p>
+            <button id="tease-btn">Click Me!</button>
+        </div>
+
+        <!-- Message Layers (Hidden initially) -->
+        <div id="message-container" class="hidden">
+
+            <!-- Layer 1 -->
+            <div class="message-layer active-layer" id="layer-1">
+                <h2>You caught me! 🏃💨</h2>
+                <p>But that was only the beginning...</p>
+                <div class="media-placeholder" id="p1">
+                    <img src="media/photo1.jpg" alt="Place photo1.jpg in media folder"
+                        onerror="this.style.display='none'; this.parentElement.innerText='[Add photo1.jpg to media folder]'">
+                </div>
+                <button class="next-btn" onclick="nextLayer(1)">Next ➡️</button>
+            </div>
+
+            <!-- Layer 2 -->
+            <div class="message-layer" id="layer-2">
+                <h2>Remember this moment?</h2>
+                <div class="media-placeholder" id="p2">
+                    <img src="media/photo2.jpg" alt="Place photo2.jpg in media folder"
+                        onerror="this.style.display='none'; this.parentElement.innerText='[Add photo2.jpg to media folder]'">
+                </div>
+                <p>Every moment with you is magic.</p>
+                <button class="next-btn" onclick="nextLayer(2)">Next ➡️</button>
+            </div>
+
+            <!-- Layer 3 -->
+            <div class="message-layer" id="layer-3">
+                <h2>Just look at that smile!</h2>
+                <div class="media-placeholder" id="p3">
+                    <img src="media/photo3.jpg" alt="Place photo3.jpg in media folder"
+                        onerror="this.style.display='none'; this.parentElement.innerText='[Add photo3.jpg to media folder]'">
+                </div>
+                <p>It creates sunshine even on cloudy days.</p>
+                <button class="next-btn" onclick="nextLayer(3)">Next ➡️</button>
+            </div>
+
+            <!-- Layer 4: Video -->
+            <div class="message-layer" id="layer-4">
+                <h2>Some moving memories...</h2>
+                <div class="media-placeholder" id="p4">
+                    <video controls width="100%" preload="auto" playsinline 
+                           onerror="this.style.display='none'; this.parentElement.innerHTML='<p style=color:#ff6f61;font-size:1.2rem>[Please add video1.mp4 to the media folder]</p>'">
+                        <source src="media/video1.mp4" type="video/mp4">
+                        <source src="media/video1.webm" type="video/webm">
+                        Your browser does not support the video tag. Please add video1.mp4 to the media folder.
+                    </video>
+                </div>
+                <p>I could watch this forever.</p>
+                <button class="next-btn" onclick="nextLayer(4)">Next ➡️</button>
+            </div>
+
+            <!-- Layer 5: Another Photo -->
+            <div class="message-layer" id="layer-5">
+                <h2>This memory is everything...</h2>
+                <div class="media-placeholder" id="p5">
+                    <img src="media/photo4.jpg" alt="Place photo4.jpg in media folder"
+                        onerror="this.style.display='none'; this.parentElement.innerText='[Add photo4.jpg to media folder]'">
+                </div>
+                <p>These moments make life beautiful.</p>
+                <button class="next-btn" onclick="nextLayer(5)">Next ➡️</button>
+            </div>
+
+            <!-- Layer 6: Extra Photo -->
+            <div class="message-layer" id="layer-6">
+                <h2>One more thing before I go...</h2>
+                <div class="media-placeholder" id="p6">
+                    <img src="media/photo5.jpg" alt="Place photo5.jpg in media folder"
+                        onerror="this.style.display='none'; this.parentElement.innerText='[Add photo5.jpg to media folder]'">
+                </div>
+                <p>Ready for your wish?</p>
+                <button class="next-btn" onclick="nextLayer(6)">Yes! 💖</button>
+            </div>
+
+            <!-- Final Layer -->
+            <div class="message-layer" id="layer-7">
+                <div class="final-content-wrapper">
+                    <div class="final-text-left">
+                        <h1 class="glow">Happy Birthday! 🎉💖</h1>
+                        <p class="typewriter-text" id="final-note"></p>
+                    </div>
+                    <div class="final-tree-right">
+                        <canvas id="canvas" width="1100" height="680"></canvas>
+                    </div>
+                </div>
+                <div id="confetti-canvas"></div>
+                <!-- Cat Animation Removed -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    </div> <!-- End of main-content -->
+</body>
+
+</html>

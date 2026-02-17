@@ -1,0 +1,805 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;600&family=Great+Vibes:wght@400&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* Animated Gradient Background */
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #fcb69f, #ffecd2, #fcb69f);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    height: 100vh;
+    overflow: hidden;
+    color: #4a4a4a;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#ambient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px) brightness(0.6);
+    transform: scale(1.1);
+    transition: background-image 1s ease-in-out, transform 10s linear, filter 1s ease;
+    will-change: transform, background-image;
+}
+
+.zoomed-bg {
+    transform: scale(1.25) !important;
+    filter: blur(35px) brightness(0.7);
+}
+
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#main-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+h1 {
+    color: #ff6f61;
+}
+
+/* Intro Screen */
+#intro-screen {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The Teasing Button */
+#tease-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 111, 97, 0.4);
+    transition: transform 0.2s, background-color 0.3s;
+    position: absolute;
+}
+
+#tease-btn:hover {
+    background-color: #ff857a;
+}
+
+/* Message Layers */
+.hidden {
+    display: none !important;
+}
+
+#message-container {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* Message Layers Transitions */
+.message-layer {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 95vh;
+}
+
+.active-layer {
+    display: block;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.exit-layer {
+    display: block;
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+    pointer-events: none;
+}
+
+/* Internal Element Animations */
+.active-layer h2,
+.active-layer p {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.active-layer h2 {
+    animation-delay: 0.1s;
+}
+
+.active-layer p {
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FINAL PAGE - MAGICAL ANTIGRAVITY LOVE SCENE */
+#layer-7.active-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, #667eea 0%, #764ba2 40%, #2c3e50 100%);
+    background-size: 200% 200%;
+    animation: nightSkyShift 20s ease-in-out infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+@keyframes nightSkyShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+#layer-7 .final-wish {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 60px 40px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: floatContainer 6s ease-in-out infinite;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes floatContainer {
+
+    0%,
+    100% {
+        transform: translateY(0) rotateX(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotateX(2deg);
+    }
+}
+
+#layer-7 .birthday-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 0 0 30px #ff69b4, 0 0 50px #ff1493;
+    margin-bottom: 25px;
+    animation: titleFloat 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+}
+
+@keyframes glowPulse {
+    from {
+        text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493, 0 0 60px #ff69b4;
+    }
+
+    to {
+        text-shadow: 0 0 30px #ff1493, 0 0 50px #ff69b4, 0 0 70px #ff1493;
+    }
+}
+
+#layer-7 #final-note {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #ffffff;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    animation: textGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 105, 180, 0.3);
+    }
+
+    to {
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 0 18px rgba(255, 105, 180, 0.4);
+    }
+}
+
+/* Romantic Heart Tree */
+#tree-container {
+    width: 280px;
+    height: 280px;
+    margin: 30px auto;
+    position: relative;
+}
+
+.tree-trunk {
+    width: 18px;
+    height: 0;
+    background: linear-gradient(to top, #5d4037, #8d6e63, #a1887f);
+    border-radius: 12px 12px 8px 8px;
+    animation: growTrunk 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.tree-branch {
+    position: absolute;
+    background: linear-gradient(to right, #8d6e63, #a1887f);
+    border-radius: 10px;
+    transform-origin: left center;
+}
+
+.tree-branch-1 {
+    width: 60px;
+    height: 12px;
+    bottom: 120px;
+    left: 20px;
+    transform: rotate(20deg);
+    animation: growBranch 2s 1.5s forwards;
+}
+
+.tree-branch-2 {
+    width: 70px;
+    height: 14px;
+    bottom: 80px;
+    left: 25px;
+    transform: rotate(-15deg);
+    animation: growBranch 2s 1.8s forwards;
+}
+
+.tree-heart {
+    position: absolute;
+    font-size: 18px;
+    color: #ff69b4;
+    animation: heartPulse 2s ease-in-out infinite;
+    text-shadow: 0 0 10px #ff69b4;
+}
+
+@keyframes heartPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes growTrunk {
+    to {
+        height: 220px;
+    }
+}
+
+@keyframes growBranch {
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+/* Polaroid Style */
+.media-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+    animation: floatCard 6s ease-in-out infinite;
+    width: fit-content;
+}
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: rotate(-2deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-2deg) translateY(-10px);
+    }
+}
+
+.media-placeholder:hover {
+    animation-play-state: paused;
+    transform: rotate(0deg) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.media-placeholder img,
+.media-placeholder video {
+    width: auto;
+    height: auto;
+    max-width: 85vw;
+    max-height: 50vh;
+    object-fit: contain;
+    border: 1px solid #eee;
+    background-color: #f5f5f5;
+}
+
+h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 2.5rem;
+    color: #ff6f61;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+    margin-bottom: 5px;
+}
+
+.next-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #61bff6;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(97, 191, 246, 0.3);
+    font-weight: 600;
+}
+
+.next-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(97, 191, 246, 0.5);
+}
+
+.next-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.next-btn:hover::after {
+    left: 100%;
+}
+
+/* Other existing animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-20px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(255, 111, 97, 0.4);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(255, 111, 97, 0.8);
+    }
+}
+
+.glow {
+    color: #ffffff;
+    animation: glow-animation 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-animation {
+    from {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 105, 180, 0.4);
+    }
+
+    to {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 105, 180, 0.6);
+    }
+}
+
+/* Final Layout: Flex with Text Left */
+.final-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100vh;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 10;
+    gap: 20px;
+}
+
+.final-text-left {
+    flex: 1 1 100%;
+    min-width: 280px;
+    text-align: left;
+    z-index: 20;
+    overflow-y: auto;
+    max-height: auto;
+    padding: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Custom scrollbar for text */
+.final-text-left::-webkit-scrollbar {
+    width: 8px;
+}
+
+.final-text-left::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.final-text-left::-webkit-scrollbar-thumb {
+    background: rgba(255, 105, 180, 0.5);
+    border-radius: 10px;
+}
+
+.final-text-left::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 105, 180, 0.8);
+}
+
+.final-tree-right {
+    flex: 1 1 100%;
+    min-width: 280px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 400px;
+}
+
+/* Ensure canvas scales nicely */
+#canvas {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    object-fit: contain;
+    /* Ensure the tree is fully visible */
+    transform: scale(1);
+    /* Display full size */
+}
+
+/* Override previous specific centering */
+#layer-7.active-layer {
+    justify-content: flex-start;
+    /* Let wrapper handle it */
+}
+
+/* Typography Overrides for Left Align */
+#layer-7 h1 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+    /* Adjusted size for longer content */
+}
+
+#layer-7 p {
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+/* Cat positioning adjustments */
+.cat-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* GitHub Tree Animation Styles */
+#wrap {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#text {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    /* Adjust based on tree position */
+    z-index: 10;
+}
+
+#code {
+    display: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: 'Caveat', cursive;
+    line-height: 1.5;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Floating Shapes and Stars */
+.floating-shape {
+    position: fixed;
+    font-size: 30px;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: float-up 6s ease-out forwards;
+    z-index: 50;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Animated Stars in Final Page */
+.star-animation {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 30;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 105, 180, 0.4);
+    animation: star-twinkle 3s ease-in-out infinite;
+}
+
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Aurora Background Effect */
+#layer-7.active-layer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse 800px 300px at 50% 0%, rgba(138, 43, 226, 0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 600px 250px at 30% 20%, rgba(0, 255, 200, 0.1) 0%, transparent 60%),
+                radial-gradient(ellipse 700px 280px at 70% 15%, rgba(255, 105, 180, 0.1) 0%, transparent 65%);
+    animation: aurora-flow 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes aurora-flow {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Firefly Styles */
+.firefly {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #ffff00, #ffaa00);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 35;
+    box-shadow: 0 0 8px #ffff00, 0 0 15px rgba(255, 255, 0, 0.5);
+}
+
+.firefly::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #ffff00, 0 0 25px rgba(255, 255, 0, 0.3);
+    animation: firefly-glow 2s ease-in-out infinite;
+}
+
+@keyframes firefly-glow {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Falling Petals */
+.petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 40;
+    animation: petal-fall linear forwards;
+}
+
+.petal::before {
+    content: '🌸';
+    font-size: 20px;
+    filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.6));
+}
+
+@keyframes petal-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100px) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Constellation Canvas */
+#constellation-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 25;
+    pointer-events: none;
+}
+
+/* Interactive Tree */
+#canvas {
+    transition: filter 0.1s ease-out;
+}
+
+#canvas:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.4));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #layer-7 .birthday-title {
+        font-size: 2rem;
+    }
+
+    #layer-7 #final-note {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .final-text-left {
+        max-width: 90%;
+        max-height: 60vh;
+    }
+
+    .final-tree-right {
+        display: none;
+    }
+
+    .final-content-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    #tree-container {
+        width: 240px;
+        height: 240px;
+    }
+}
